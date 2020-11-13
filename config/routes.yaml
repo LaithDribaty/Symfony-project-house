@@ -1,0 +1,10 @@
+index:
+    path: /
+    controller: App\Controller\PositionController::homepage
+test:
+    path: /test
+    controller: App\Controller\PositionController::test
+
+about:
+    path: /about
+    controller: App\Controller\PositionController::about

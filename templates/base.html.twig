@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+    <head>
+        <meta charset="UTF-8">
+        <meta content="width=device-width, initial-scale=1.0" name="viewport"> 
+        <title>{% block title %}Welcome!{% endblock %}</title>
+        {% block stylesheets %}
+        <style>
+            .masthead {
+                height: 100vh;
+                min-height: 500px;
+                background-image: url('https://source.unsplash.com/BtbjCFUvBXs/1920x1080');
+                background-size: cover;
+                background-position: center;
+                background-repeat: no-repeat;
+              }
+        </style>
+        {% endblock %}
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.slim.min.js"></script>
+        <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.bundle.min.js"></script>        
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+        <link rel="stylesheet" href="https://code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+        <link rel="stylesheet" href="https://jqueryui.com/resources/demos/style.css">
+    </head>
+    <body style="background-color:thistle;" id="body">
+        {{ include('secondary/header.html.twig') }}
+        <br> <br>
+        {% block body %}
+            
+        {% endblock %}
+        {% block javascripts %}
+            <script src="https://code.jquery.com/jquery-3.4.1.min.js"
+              integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo="
+              crossorigin="anonymous"></script>
+            <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+        {% endblock %}
+    </body>
+</html>

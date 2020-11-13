@@ -1,0 +1,108 @@
+{% extends "base.html.twig" %}
+
+{% block stylesheets %}
+    <style type="text/css">
+		.img-overlay-wrap {
+			position: relative;
+			display: inline-block; /* <= shrinks container to image size */
+			transition: transform 150ms ease-in-out;
+			width:100%;
+			height:100%;
+		}
+
+		.img-overlay-wrap img { /* <= optional, for responsiveness */
+			display: block;
+			width:100%;
+			height:auto;
+			position:relative;
+		}
+
+		.img-overlay-wrap svg {
+			position: absolute;
+			top: 0;
+			left: 0;
+			width: 100%;
+		    height: auto;
+		}
+    </style>
+{% endblock stylesheets %}
+
+{% block body %}
+    <center >
+        <section>
+            <div style="border: solid 3px rgb(37, 113, 156);" class="img-overlay-wrap" id="img-overlay-wrap">
+                <!--<img src="img/frontSide.jpg" alt="" id="img">-->
+                <img src="img/firstOutSide.jpg" alt="" id="img">
+            </div>
+        </section>
+    </center>
+
+    <section id="secion_dialogs">
+        
+    </section>
+{% endblock body %}
+
+{% block javascripts %}
+
+    {{ parent() }}
+    <script>
+
+        var windowHeight = window.innerHeight; // taking the width and height of the device
+        var windowWidth = window.innerWidth; 
+        function show(strId) {
+            document.getElementById(strId).style.opacity = "0.3";
+        }
+
+        function hide(strId) {
+            document.getElementById(strId).style.opacity = "0.00";
+        }
+
+        function showIcon(strId , iconName) {
+            $(document.getElementById(strId)).css({'cursor' : 'url(/img/icons/'+iconName+'.png) , default'});
+        }
+        
+        function hideIcon(strId , iconName) {
+            document.getElementById(strId).cursor = "default";
+        }
+
+        function updateWrap(callback) {
+            var img = document.getElementById('img');
+            var imgWrap = document.getElementById('img-overlay-wrap');
+            if(windowWidth > windowHeight) {
+                var newH = windowHeight;
+                var oldH = img.height; // this is causing problems with time of uploading the img
+                //setTimeout(function() {                    
+                    imgWrap.style.height = newH + "px";
+                    imgWrap.style.width = ( img.width * (newH / oldH) ) + "px";
+                //}, 200);
+            } else {
+                var newW = windowWidth;
+                var oldW = img.width; // this is causing problems with time of uploading the img
+                //setTimeout(function() {
+                    imgWrap.style.width = newW + "px";
+                    imgWrap.style.height = ( img.height * (newW / oldW) ) + "px";
+                //}, 200);
+            }
+            imgWrap.style.textAlign = "center";
+            callback(); // to run in sequese with some other functions
+        }
+
+        var currentPosition = "firstOutSide"; // to know where is my location
+    </script>
+
+    <script src="js/storage.js"></script>
+    <script src="js/dialog.js"></script>
+    <script src="js/pathes.js"></script>
+
+    <script>
+        // to run in sequese , i passed the function as callback , since we can pass functions as parameters
+        updateWrap(
+            function(){
+                addTheRightPathes(
+                    addRightDialog
+                );
+            }
+        );
+    </script>
+
+{% endblock javascripts %}

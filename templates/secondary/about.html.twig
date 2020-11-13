@@ -1,0 +1,57 @@
+{% extends "base.html.twig" %}
+
+{% block stylesheets %}
+    {{ parent() }}
+    <style>
+        body{
+            background-image: url('img/about.jpg');
+            background-repeat: no-repeat;
+            background-size: cover;
+        }
+        #cont{
+            color: white;
+            background-color: rgba(0 , 0 , 0 , 0.65);
+        }
+
+        #SmallCont{
+            border: solid 2px black;
+            border-radius: 8%;
+            padding: 9px;
+            background-color: rgba(0 , 0 , 0 , 0.80);
+        }
+    </style>
+{% endblock stylesheets %}
+
+{% block body %}
+
+    <div id="cont">
+
+        <br><br><br>
+        <center>
+            <div id="SmallCont">
+
+                <strong style="color:tan">developer:</strong> laith drebaty,web developer <br>
+                <strong style="color:tan">explain: </strong>this is just a demo to show our house in <strong style="color:tomato"> syria lattakia zoobar </strong>
+                , the website shows some stuff from the house, you may also traverse through the house
+                by clicking some doors or areas <br>
+                <strong style="color:tan"> some features are not responsive </strong> <br>
+                <strong style="color:tan">Contact:</strong> <a href="mailTo:laith.drebaty@gmail.com" style="color:tomato"> laith.drebaty@gmail.com </a>  <br>
+
+            </div>
+        </center>
+
+    </div>
+
+{% endblock body %}
+
+{% block javascripts %}
+    <script>
+        var div = document.getElementById('cont');
+        div.style.height = window.innerHeight + "px";
+
+        var smallCont = document.getElementById('SmallCont');
+        smallCont.style.height = (window.innerHeight/3) + "px";
+        smallCont.style.width = (window.innerWidth/3.7) + "px";
+
+    </script>
+{% endblock javascripts %}

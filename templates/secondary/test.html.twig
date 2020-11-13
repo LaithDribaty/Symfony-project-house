@@ -1,0 +1,16 @@
+{% extends "base.html.twig" %}
+
+{% block body %}
+    <svg viewBox="0 0 3600 2160" id="svg"> <path d="L1526 698 L1544 1628 L2011 1621 L1995 689 L1524 698  Z" id="path1" style="stroke: black; opacity: 0.0;" onmouseover="show('path1');" onmouseleave="hide('path1');"></path></svg>
+{% endblock body %}
+
+{% block javascripts %}
+    <script> 
+        function show(strId) {
+            document.getElementById(strId).style.opacity = "0.3";
+        }
+        function hide(strId) {
+            document.getElementById(strId).style.opacity = "0.00";
+        }
+    </script>
+{% endblock javascripts %}
